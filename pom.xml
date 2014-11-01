@@ -17,6 +17,10 @@
 		<commons_codec_ver>1.8</commons_codec_ver>
 		<commons_lang3_ver>3.1</commons_lang3_ver>
 		<commons_collections_ver>3.2.1</commons_collections_ver>
+		<commons_beanutils_ver>1.9.1</commons_beanutils_ver>
+		<commons_betwixt_ver>0.8</commons_betwixt_ver>
+		<commons_email_ver>1.2</commons_email_ver>
+		<commons_compress_ver>1.4.1</commons_compress_ver>
 		<guava_ver>16.0.1</guava_ver>
 	</properties>
 
@@ -27,7 +31,7 @@
 			<version>3.8.1</version>
 		</dependency>
 		
-		<!-- Utils -->
+		<!-- Utils apache -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -44,14 +48,52 @@
 			<version>${commons_io_ver}</version>
 		</dependency>
 		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons_beanutils_ver}</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>${commons_codec_ver}</version>
 		</dependency>
 		<dependency>
+			<groupId>commons-betwixt</groupId>
+			<artifactId>commons-betwixt</artifactId>
+			<version>${commons_betwixt_ver}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>${commons_compress_ver}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>${commons_email_ver}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.commons-collections</artifactId>
+			<version>3.2.1_3</version>
+		</dependency>
+		<!-- Util google -->
+		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava_ver}</version>
+		</dependency>
+		<!-- mongo -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.12.2</version>
+		</dependency>
+		<!-- redis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.1.0</version>
 		</dependency>
 	</dependencies>
 </project>
