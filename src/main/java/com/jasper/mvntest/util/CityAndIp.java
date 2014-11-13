@@ -1,17 +1,15 @@
 package com.jasper.mvntest.util;
 
 import java.io.File;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
 import com.google.common.collect.Range;
+import com.google.common.collect.RangeSet;
+import com.google.common.collect.TreeRangeSet;
 
 public class CityAndIp {
 	
@@ -22,8 +20,10 @@ public class CityAndIp {
 			System.out.println("no");
 		}
 		
-		Multimap<String, Range<Long>> cityIps = ArrayListMultimap.create();
-		Multimap<String, Range<Long>> provinceIps = ArrayListMultimap.create();
+//		Multimap<String, Range<Long>> cityIps = ArrayListMultimap.create();
+//		Multimap<String, Range<Long>> provinceIps = ArrayListMultimap.create();
+		Map<String, RangeSet<Long>> cityIps = new HashMap<String, RangeSet<Long>>();
+		Map<String, RangeSet<Long>> provinceIps = new HashMap<String, RangeSet<Long>>();
 		Scanner scanner = null;
         try {
         	String filePath = CityAndIp.class.getClassLoader().getResource("networkips_city.txt").getFile();
@@ -38,37 +38,39 @@ public class CityAndIp {
                 	Range<Long> range = Range.closed(ip1, ip2);
                 	//2：省份 ；3：市
                 	if(StringUtils.isNotBlank(words[2])) {
-                		provinceIps.put(words[2], range);
+                	    RangeSet<Long> rangeSet = provinceIps.get(words[2]);
+                	    if(rangeSet == null) {
+                	        rangeSet = TreeRangeSet.create();
+                	        provinceIps.put(words[2], rangeSet);
+                	    }
+                		rangeSet.add(range);
                 	}
                 	if(StringUtils.isNotBlank(words[3])) {
-                		cityIps.put(words[3], range);
+                	    RangeSet<Long> rangeSet = cityIps.get(words[3]);
+                        if(rangeSet == null) {
+                            rangeSet = TreeRangeSet.create();
+                            cityIps.put(words[3], rangeSet);
+                        }
+                        rangeSet.add(range);
                 	}
                 } catch(Exception e) {
                 	System.out.println(line);
                 }
                 count++;
             }
-            System.out.println("Total GuangDong ip set is:" + count);
+            System.out.println("Total ip set is:" + count);
         } catch(Exception e) {
         	e.printStackTrace();
         }
         
-        System.out.println(check(cityIps.get("广州"), ip2Long("223.247.64.12")));
-        System.out.println(check(cityIps.get("亳州"), ip2Long("223.247.64.12")));
-        System.out.println(check(provinceIps.get("安徽"), ip2Long("223.247.64.12")));
+        System.out.println(cityIps.get("广州").contains(ip2Long("183.60.177.228")));
+        System.out.println(cityIps.get("广州").contains(ip2Long("223.247.64.12")));
+        System.out.println(cityIps.get("亳州").contains(ip2Long("223.247.64.12")));
+        System.out.println(provinceIps.get("安徽").contains(ip2Long("223.247.64.12")));
 	}
 	
-	private static boolean check(Collection<Range<Long>> ranges, Long ip) {
-		Iterator<Range<Long>> iterator = ranges.iterator();
-		while (iterator.hasNext()) {
-			if (iterator.next().contains(ip)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static boolean checkCityUniqueness() {
+	@SuppressWarnings("resource")
+    public static boolean checkCityUniqueness() {
 		Map<String, String> cityMap = new HashMap<String, String>();
 		Scanner scanner = null;
 		boolean flag = true;
