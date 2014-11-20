@@ -19,23 +19,27 @@ import redis.clients.util.JedisClusterCRC16;
 
 public class TestRedisCluster {
     static String IP = "172.19.108.127";
+
+    static Set<HostAndPort> nodeSet = new HashSet<>();
+    static {
+        nodeSet.add(new HostAndPort(IP, 6701));
+        nodeSet.add(new HostAndPort(IP, 6702));
+        nodeSet.add(new HostAndPort(IP, 6703));
+        nodeSet.add(new HostAndPort(IP, 6704));
+        nodeSet.add(new HostAndPort(IP, 6705));
+        nodeSet.add(new HostAndPort(IP, 6706));
+    }
     
     public static void main1(String[] args) {
-        System.out.println(JedisClusterCRC16.getCRC16("foo231") % 16384);
-        System.out.println(JedisClusterCRC16.getCRC16("foo232") % 16384);
-        System.out.println(JedisClusterCRC16.getCRC16("foo233") % 16384);
-        Jedis jedis = new Jedis(IP, 7004);
-        System.out.println(jedis.get("foo232"));
+        System.out.println(JedisClusterCRC16.getCRC16("foo1") % 16384);
+        System.out.println(JedisClusterCRC16.getCRC16("e") % 16384);
+//        System.out.println(JedisClusterCRC16.getCRC16("foo232") % 16384);
+//        System.out.println(JedisClusterCRC16.getCRC16("foo233") % 16384);
+//        Jedis jedis = new Jedis(IP, 7004);
+//        System.out.println(jedis.get("foo232"));
     }
     
     public static void main2(String[] args) {
-        Set<HostAndPort> nodeSet = new HashSet<>();
-        nodeSet.add(new HostAndPort(IP, 7000));
-        nodeSet.add(new HostAndPort(IP, 7001));
-        nodeSet.add(new HostAndPort(IP, 7002));
-        nodeSet.add(new HostAndPort(IP, 7003));
-        nodeSet.add(new HostAndPort(IP, 7004));
-        nodeSet.add(new HostAndPort(IP, 7005));
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxWaitMillis(20);
         config.setMaxTotal(16384);
@@ -123,18 +127,11 @@ public class TestRedisCluster {
     }
     
     @SuppressWarnings("resource")
-    public static void main(String[] args) {
-        Set<HostAndPort> nodes = new HashSet<>();
-        nodes.add(new HostAndPort(IP, 7000));
-        nodes.add(new HostAndPort(IP, 7001));
-        nodes.add(new HostAndPort(IP, 7002));
-        nodes.add(new HostAndPort(IP, 7003));
-        nodes.add(new HostAndPort(IP, 7004));
-        nodes.add(new HostAndPort(IP, 7005));
+    public static void main3(String[] args) {
         JedisPoolConfig config = new JedisPoolConfig();
         config.setMaxWaitMillis(20);
         config.setMaxTotal(16384);
-        JedisCluster jedisCluster = new JedisCluster(nodes, 10, 2, config);
+        JedisCluster jedisCluster = new JedisCluster(nodeSet, 10, 2, config);
         int i = 0;
         while (true) {
             System.out.println(i);
@@ -151,6 +148,13 @@ public class TestRedisCluster {
         }
 //        jedisCluster.set("hello", "world3");
 //        System.out.println(jedisCluster.get("hello"));
+    }
+    
+    public static void main(String[] args) {
+        Jedis jedis = new Jedis(IP, 6703);
+        System.out.println(jedis.get("foo"));
+        Jedis jedis2 = new Jedis(IP, 6706);
+        System.out.println(jedis2.get("foo"));
     }
 
 }
