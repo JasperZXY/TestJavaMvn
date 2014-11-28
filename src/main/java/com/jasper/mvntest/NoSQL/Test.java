@@ -20,7 +20,8 @@ public class Test {
     public Test() {
         jedisPool = new JedisPool("172.19.108.127", 6379);
     }
-    
+
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         Test test = new Test();
         final String key = "test";
@@ -78,6 +79,16 @@ public class Test {
         System.out.println("==========end===========");
     }
     
+//    @SuppressWarnings("unchecked")
+//    public String get(final String key) {
+//        return execute(new ExecuteRedis() {
+//            @Override
+//            public String execute(Jedis jedis) {
+//                return jedis.get(key);
+//            }
+//        });
+//    }
+    
     public <T> T execute(ExecuteRedis redis) {
         Jedis jedis = jedisPool.getResource();
         try {
@@ -96,5 +107,4 @@ public class Test {
         <T> T execute(Jedis jedis);
     }
     
-
 }
