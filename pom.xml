@@ -32,9 +32,9 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.11</version>
 		</dependency>
-		
+
 		<!-- Utils apache -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -76,7 +76,7 @@
 			<artifactId>commons-email</artifactId>
 			<version>${commons_email_ver}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.commons-collections</artifactId>
@@ -140,6 +140,22 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
 			<version>${slf4j_ver}</version>
+		</dependency>
+
+		<!-- zookeeper -->
+		<!-- <dependency> <groupId>org.apache.zookeeper</groupId> <artifactId>zookeeper</artifactId> 
+			<version>3.4.6</version> </dependency> -->
+		<dependency>
+			<groupId>com.github.adyliu</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+
+		<!-- thrift -->
+		<dependency>
+			<groupId>org.apache.thrift</groupId>
+			<artifactId>libthrift</artifactId>
+			<version>0.6.1</version>
 		</dependency>
 	</dependencies>
 </project>
