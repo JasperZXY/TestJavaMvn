@@ -157,5 +157,12 @@
 			<artifactId>libthrift</artifactId>
 			<version>0.6.1</version>
 		</dependency>
+
+		<!-- excel -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.5-FINAL</version>
+		</dependency>
 	</dependencies>
 </project>
