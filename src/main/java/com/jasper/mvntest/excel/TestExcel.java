@@ -57,10 +57,11 @@ public class TestExcel {
             }
             
             for (int i=0; i<dataList.size(); i++) {
-                for (int j=0; j<dataList.get(i).size(); j++) {
-//                    jxl.write.Number number = new jxl.write.Number(j, i+start, dataList.get(i).get(j).doubleValue());
-                    Label label = new Label(j, i+start, dataList.get(i).get(j));
-                    sheet.addCell(label);
+                Label label = new Label(0, i+start, dataList.get(i).get(0));
+                sheet.addCell(label);
+                for (int j=1; j<dataList.get(i).size(); j++) {
+                    jxl.write.Number number = new jxl.write.Number(j, i+start, Long.parseLong(dataList.get(i).get(j)));
+                    sheet.addCell(number);
                 }
             }
 
@@ -99,7 +100,7 @@ public class TestExcel {
                 //操作结果集
                 while(rs.next()) {
                     List<String> item = new ArrayList<>();
-                    item.add(TimeUtil.get(8, new Date(time)));
+                    item.add(TimeUtil.get(11, new Date(time)));
                     if (rs.getString("successCount") == null) {
                         item.add("0");
                     } else {

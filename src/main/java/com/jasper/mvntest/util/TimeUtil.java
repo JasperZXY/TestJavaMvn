@@ -17,7 +17,8 @@ public class TimeUtil {
         new SimpleDateFormat("yyyyMMddHHmmss"),
         new SimpleDateFormat("yyyyMMdd"),
         new SimpleDateFormat("yyw"),
-        new SimpleDateFormat("yyMM")
+        new SimpleDateFormat("yyMM"),
+        new SimpleDateFormat("yyyy-MM-dd")
     };
     
     /**
@@ -32,6 +33,7 @@ public class TimeUtil {
      * 格式 8：yyyyMMdd <br>
      * 格式 9：yyw(year + week in year) <br>
      * 格式 10：yyMM <br>
+     * 格式 11：yyyy-MM-dd <br>
      * 默认：格式1<br>
      * @param 参数(formatType) :格式代码号
      * @return 字符串
@@ -58,6 +60,7 @@ public class TimeUtil {
      * 格式 8：yyyyMMdd <br>
      * 格式 9：yyw(year + week in year) <br>
      * 格式 10：yyMM <br>
+     * 格式 11：yyyy-MM-dd <br>
      * 默认：格式1<br>
      * @param
      * @return 
