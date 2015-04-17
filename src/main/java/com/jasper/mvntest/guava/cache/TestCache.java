@@ -34,6 +34,7 @@ public class TestCache {
         }
         System.out.println(obj);
         System.out.println(cache.getIfPresent("1"));
+        System.out.println("==============");
         try {
             obj = cache.get("ab", new Callable<Object>() {
                 @Override

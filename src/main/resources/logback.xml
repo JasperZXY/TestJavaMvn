@@ -15,9 +15,9 @@
 	</appender>
 	
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logs.dir}/subscription-api.log</file>
+		<file>${logs.dir}/test.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${logs.dir}/subscription-api.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<fileNamePattern>${logs.dir}/test.%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>15</maxHistory>
 		</rollingPolicy>
 		<encoder>
@@ -26,41 +26,6 @@
 		</encoder>
 	</appender>
 	
-	<appender name="HTTP-ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logs.dir}/http_access.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${logs.dir}/http_access_%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>15</maxHistory>
-		</rollingPolicy>
-		<encoder>
-			<charset>UTF-8</charset> 
-			<pattern>%date - %msg%n</pattern>
-		</encoder>
-	</appender>
-	
-	<appender name="ACCESS-WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logs.dir}/warn.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${logs.dir}/warn_%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>15</maxHistory>
-		</rollingPolicy>
-		<encoder>
-			<charset>UTF-8</charset> 
-			<pattern>%date - %msg%n</pattern>
-		</encoder>
-	</appender>
-	
-	<appender name="ACCESS-ALERT" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logs.dir}/warning_access.log</file>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${logs.dir}/warning_access_%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>15</maxHistory>
-		</rollingPolicy>
-		<encoder>
-			<charset>UTF-8</charset> 
-			<pattern>%date - %msg%n</pattern>
-		</encoder>
-	</appender>
 
 	<logger name="java.sql" level="WARN" />
 	<logger name="com.mchange" level="WARN" />
@@ -69,20 +34,9 @@
 	<logger name="org.springframework" level="WARN" />
 	<logger name="com.yy.cs.center.thrift" level="WARN" />
 	<logger name="com.yy.cs.center.remoting" level="WARN" />
-	
-	<logger name="HTTP-ACCESS" level="INFO" additivity="false">
-		<appender-ref ref="HTTP-ACCESS" />
-	</logger>
-	
-	<logger name="ACCESS-WARN" level="INFO" additivity="false">
-		<appender-ref ref="ACCESS-WARN" />
-	</logger>
-	
-	<logger name="ACCESS-ALERT" level="INFO" additivity="false">
-		<appender-ref ref="ACCESS-ALERT" />
-	</logger>
 
 	<root level="${logs.level}">
+		<appender-ref ref="FILE" />
 		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>
