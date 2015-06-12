@@ -4,13 +4,16 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.MapUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.jasper.mvntest.xml.bean.Classes;
 import com.jasper.mvntest.xml.bean.ListBean;
 import com.jasper.mvntest.xml.bean.Student;
 import com.thoughtworks.xstream.XStream;
@@ -135,6 +138,27 @@ public class TestXml {
 //            xstream.aliasField("生日", Birthday.class, "birthday");
           
             print(xstream.toXML(listBean));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @Test
+    public void writeList2XML4Annotation() {
+        try {
+            print("---------annotation Bean --> XML---------");
+            Student stu = new Student();
+            stu.setName("jack");
+            Classes c = new Classes();
+            c.setStudents(Collections.singletonList(stu));
+            c.setName("一班");
+            c.setNumber(2);
+            //对指定的类使用Annotation
+//            xstream.processAnnotations(Classes.class);
+            //启用Annotation
+            xstream.autodetectAnnotations(true);
+            xstream.alias("student", Student.class);
+            print(xstream.toXML(c));
         } catch (Exception e) {
             e.printStackTrace();
         }

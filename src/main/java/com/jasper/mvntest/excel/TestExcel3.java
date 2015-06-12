@@ -26,7 +26,7 @@ public class TestExcel3 {
     public static void main(String[] args) {
         try {
 
-            write("F:\\\\tmp\\消息通道统计-2月份.xls", 
+            write("F:\\\\tmp\\消息通道统计-5月份.xls", 
                     "jdbc:mysql://14.17.107.112:6303/service_popup?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull", 
                     "service_popup", "LbalVg1B8V");
 
@@ -41,7 +41,7 @@ public class TestExcel3 {
             WritableWorkbook book = Workbook.createWorkbook(new File(filePath));
             // 参数0表示这是第一页
             WritableSheet sheet0 = book.createSheet("汇总", 0);
-            List<String> titleListSum = Arrays.asList("appId", "业务", "日期", "到达量", "曝光量", "点击数", "点击用户数");
+            List<String> titleListSum = Arrays.asList("appId", "业务", "msgId", "日期", "到达量", "曝光量", "点击数", "点击用户数");
             List<List<String>> dataListSum = getDataFromDB(url, username, password);
             for (int i = 0; i < titleListSum.size(); i++) {
                 Label label = new Label(i, 0, titleListSum.get(i));
@@ -50,13 +50,15 @@ public class TestExcel3 {
 
             for (int i = 0; i < dataListSum.size(); i++) {
                 for (int j = 0; j < dataListSum.get(i).size(); j++) {
-                    if (j == 1 || j == 2) {
-                        Label label = new Label(j, i + 1, dataListSum.get(i).get(j));
-                        sheet0.addCell(label);
-                    } else {
-                        jxl.write.Number number = new jxl.write.Number(j, i + 1, Long.parseLong(dataListSum.get(i).get(j)));
-                        sheet0.addCell(number);
-                    }
+                    Label label = new Label(j, i + 1, dataListSum.get(i).get(j));
+                    sheet0.addCell(label);
+//                    if (j == 1 || j == 2) {
+//                        Label label = new Label(j, i + 1, dataListSum.get(i).get(j));
+//                        sheet0.addCell(label);
+//                    } else {
+//                        jxl.write.Number number = new jxl.write.Number(j, i + 1, Long.parseLong(dataListSum.get(i).get(j)));
+//                        sheet0.addCell(number);
+//                    }
                 }
             }
             
@@ -84,19 +86,20 @@ public class TestExcel3 {
             conn = DriverManager.getConnection(url, username, password);
             // 通过Connection对象创建Statement对象
             // stmt = conn.createStatement();
-            stmt = conn.prepareStatement("select * from popupHistory where popupDate > '2015-01-21'");
+            stmt = conn.prepareStatement("select * from popupLog where appId=1001 and popupDate > '2015-05-01'");
             rs = stmt.executeQuery();
             // 操作结果集
             while (rs.next()) {
                 List<String> item = new ArrayList<>();
                 item.add(rs.getString("appId"));
-                if ("10000".equals(rs.getString("appId"))) {
+                if ("1001".equals(rs.getString("appId"))) {
                     item.add("页游");
-                } else if("10002".equals(rs.getString("appId"))) {
-                    item.add("游戏机");
+                } else if("1002".equals(rs.getString("appId"))) {
+                    item.add("端游");
                 } else {
-                    item.add("YY7介绍");
+                    item.add("其他");
                 }
+                item.add(rs.getString("msgId"));
                 item.add(rs.getString("popupDate"));
                 if (rs.getString("popupCount") == null) {
                     item.add("0");

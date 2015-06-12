@@ -7,8 +7,9 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
-@XStreamAlias("class")
+@XStreamAlias("班级")
 public class Classes {
+    
     /*
      * 设置属性显示
      */
@@ -22,7 +23,31 @@ public class Classes {
     @XStreamOmitField
     private int number;
     
-    @XStreamImplicit(itemFieldName = "Students")
+    @XStreamImplicit(itemFieldName = "所以学生")
     private List<Student> students;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 
 }

@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
+import com.mongodb.TaggableReadPreference;
 
 public class SpringMongo {
     public static void main(String[] args) {
@@ -21,7 +22,11 @@ public class SpringMongo {
             serverAddresses.add(new ServerAddress("127.0.0.1", 27018));
             serverAddresses.add(new ServerAddress("127.0.0.1", 27019));
             serverAddresses.add(new ServerAddress("127.0.0.1", 27020));
-            MongoDbFactory mongoDbFactory = new SimpleMongoDbFactory(new MongoClient(serverAddresses), "test");
+            MongoDbFactory mongoDbFactory = new SimpleMongoDbFactory(new MongoClient(new ServerAddress("127.0.0.1", 27020)), "test");
+            
+//            MongoDbFactory mongoDbFactory = new SimpleMongoDbFactory(new MongoClient(new ServerAddress("127.0.0.1", 27020)), "test");
+//            mongoDbFactory.getDb().getMongo().setReadPreference(TaggableReadPreference.secondaryPreferred());   //备份接口可以读
+            
             MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory);
             
             User user = new User();

@@ -31,9 +31,9 @@ public class TestExcel {
             prop.load(in);
             System.out.println(prop);
 
-            write("F:\\\\tmp\\游戏公社弹窗数据汇总表15-22.xls", 
+            write("F:\\\\tmp\\游戏公社弹窗数据汇总表517-523.xls", 
                     prop.getProperty("url"), prop.getProperty("username"), prop.getProperty("password"), 
-                    "20150315", "20150322");
+                    "20150517", "20150523");
 
         } catch (Exception e) {
             e.printStackTrace();
