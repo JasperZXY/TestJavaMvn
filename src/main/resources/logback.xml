@@ -1,43 +1,178 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod="60 seconds">
+<configuration debug="true" scan="true">
 
-	<property resource="subscription-api.properties" />
+	<!-- RollingFileAppender start -->
 
-	<!-- Handle JUL -->
-	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
-		<resetJUL>true</resetJUL>
-	</contextListener>
-
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>%date [%thread] [%file:%line] [%level %logger{0}] - %msg%n</pattern>
-		</encoder>
-	</appender>
-	
-	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logs.dir}/test.log</file>
+	<appender name="ROLL_FILE_TRACE_SYNC" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.home}/${project.name}/trace.log</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">  
+		    <level>TRACE</level>
+		    <onMatch>ACCEPT</onMatch>
+		    <onMismatch>DENY</onMismatch>
+		</filter>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${logs.dir}/test.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>15</maxHistory>
+			<fileNamePattern>${log.home}/${project.name}/history/trace_%d{yyyy-MM-dd}_%i.log.zip
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 		<encoder>
-			<charset>UTF-8</charset> 
-			<pattern>%date [%thread] [%file:%line] [%level %logger{0}] - %msg%n</pattern>
+			<charset>UTF-8</charset>
+			<pattern>%date [%thread] [%file:%line] [%level %logger{0}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="ROLL_FILE_DEBUG_SYNC" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.home}/${project.name}/debug.log</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">  
+		    <level>DEBUG</level>  
+		    <onMatch>ACCEPT</onMatch>
+		    <onMismatch>DENY</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.home}/${project.name}/history/debug_%d{yyyy-MM-dd}_%i.log.zip
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%date [%thread] [%file:%line] [%level %logger{0}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="ROLL_FILE_INFO_SYNC" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.home}/${project.name}/info.log</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">  
+		    <level>INFO</level>  
+		    <onMatch>ACCEPT</onMatch>
+		    <onMismatch>DENY</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.home}/${project.name}/history/info_%d{yyyy-MM-dd}_%i.log.zip
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%date [%thread] [%file:%line] [%level %logger{0}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="ROLL_FILE_WARN_SYNC" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.home}/${project.name}/warn.log</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">  
+		    <level>WARN</level>  
+		    <onMatch>ACCEPT</onMatch>
+		    <onMismatch>DENY</onMismatch>
+		</filter>  
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.home}/${project.name}/history/warn_%d{yyyy-MM-dd}_%i.log.zip
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%date [%thread] [%file:%line] [%level %logger{50}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="ROLL_FILE_ERROR_SYNC" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.home}/${project.name}/error.log</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">  
+		    <level>ERROR</level>  
+		    <onMatch>ACCEPT</onMatch>
+		    <onMismatch>DENY</onMismatch>
+		</filter>  
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.home}/${project.name}/history/error_%d{yyyy-MM-dd}_%i.log.zip
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%date [%thread] [%file:%line] [%level %logger{50}] - %msg%n
+			</pattern>
 		</encoder>
 	</appender>
 	
-
-	<logger name="java.sql" level="WARN" />
-	<logger name="com.mchange" level="WARN" />
-	<logger name="org.apache" level="WARN" />
-	<logger name="org.mybatis" level="WARN" />
-	<logger name="org.springframework" level="WARN" />
-	<logger name="com.yy.cs.center.thrift" level="WARN" />
-	<logger name="com.yy.cs.center.remoting" level="WARN" />
-
-	<root level="${logs.level}">
-		<appender-ref ref="FILE" />
-		<appender-ref ref="STDOUT" />
+	
+	<!-- AsyncAppender start -->
+	
+	<appender name="ROLL_FILE_TRACE" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="ROLL_FILE_TRACE_SYNC" />
+		<includeCallerData>true</includeCallerData>
+	</appender>
+	<appender name="ROLL_FILE_DEBUG" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="ROLL_FILE_DEBUG_SYNC" />
+		<includeCallerData>true</includeCallerData>
+	</appender>
+	<appender name="ROLL_FILE_INFO" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="ROLL_FILE_INFO_SYNC" />
+		<includeCallerData>true</includeCallerData>
+	</appender>
+	<appender name="ROLL_FILE_WARN" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="ROLL_FILE_WARN_SYNC" />
+		<includeCallerData>true</includeCallerData>
+	</appender>
+	<appender name="ROLL_FILE_ERROR" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="ROLL_FILE_ERROR_SYNC" />
+		<includeCallerData>true</includeCallerData>
+	</appender>
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%date [%thread] [%file:%line] [%level %logger{0}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	
+	<logger name="com.jasper" additivity="false" level="ERROR">
+		<appender-ref ref="ROLL_FILE_ERROR" />
+		${logback.console}
+	</logger>
+	<logger name="com.jasper" additivity="false" level="WARN">
+		<appender-ref ref="ROLL_FILE_WARN" />
+		${logback.console}
+	</logger>
+	<logger name="com.jasper" additivity="false" level="INFO">
+		<appender-ref ref="ROLL_FILE_INFO" />
+		${logback.console}
+	</logger>
+	<logger name="com.jasper" additivity="false" level="DEBUG">
+		<appender-ref ref="ROLL_FILE_DEBUG" />
+		${logback.console}
+	</logger>
+	<logger name="com.jasper" additivity="false" level="TRACE">
+		<appender-ref ref="ROLL_FILE_TRACE" />
+		${logback.console}
+	</logger>
+	<root level="${log.level}">
+		${logback.console}
 	</root>
 </configuration>
-

@@ -27,6 +27,7 @@
         <slf4j_ver>1.7.5</slf4j_ver>
         <logback_ver>1.0.13</logback_ver>
         <rxjava_version>1.1.6</rxjava_version>
+        <apache_poi_ver>3.8</apache_poi_ver>
     </properties>
 
     <dependencies>
@@ -170,6 +171,11 @@
             <artifactId>jxl</artifactId>
             <version>2.6</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${apache_poi_ver}</version>
+        </dependency>
         <!-- MySQL -->
         <dependency>
             <groupId>mysql</groupId>
@@ -207,15 +213,36 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <log.home>D:/logs</log.home>
+                <log.level>DEBUG</log.level>
+                <project.name>TestJavaMvn</project.name>
+                <logback.console>&lt;appender-ref ref=&quot;STDOUT&quot; /&gt;</logback.console>
+            </properties>
+        </profile>
+    </profiles>
 </project>
