@@ -28,6 +28,7 @@
         <logback_ver>1.0.13</logback_ver>
         <rxjava_version>1.1.6</rxjava_version>
         <apache_poi_ver>3.8</apache_poi_ver>
+        <netty_ver>4.1.8.Final</netty_ver>
     </properties>
 
     <dependencies>
@@ -208,6 +209,13 @@
             <groupId>io.reactivex</groupId>
             <artifactId>rxjava</artifactId>
             <version>${rxjava_version}</version>
+        </dependency>
+
+        <!-- Netty -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty_ver}</version>
         </dependency>
 
     </dependencies>
