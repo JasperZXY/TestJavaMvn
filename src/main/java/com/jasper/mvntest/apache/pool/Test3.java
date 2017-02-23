@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *<a href="http://blog.csdn.net/kongxx/article/details/6612760">原文</a><br>
+ * <a href="http://blog.csdn.net/kongxx/article/details/6612760">原文</a><br>
  * 其中包含了三个方法，分别测试了三种情况；
  * <ul>
  * <li>
@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  * </ul>
  * 其实对于GenericObjectPool.Config类和GenericKeyedObjectPool.Config类还是有很多配置参数的，
  * 这里只是列出的最简单的几个常用的，具体可以参考官方文档
- * 
+ *
  * @author Jasper
  */
 public class Test3 {
@@ -38,8 +38,8 @@ public class Test3 {
     public static void main(String[] args) {
         System.out.println("====================");
 //        test1();
-//         test2();
-         test3();
+        test2();
+//         test3();
     }
 
     private static void test1() {

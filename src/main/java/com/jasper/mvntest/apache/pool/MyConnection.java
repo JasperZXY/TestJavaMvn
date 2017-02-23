@@ -16,12 +16,12 @@ public class MyConnection {
 
     public void connect() {
         this.connected = true;
-        logger.info(name + ": " + connected);
+        logger.info("connect " + name + ": " + connected);
     }
 
     public void close() {
         this.connected = false;
-        logger.info(name + ": " + connected);
+        logger.info("close " + name + ": " + connected);
     }
 
     public boolean isConnected() {
@@ -33,6 +33,6 @@ public class MyConnection {
     }
 
     public void print() {
-        logger.info(this.name);
+        logger.info("print " + this.name);
     }
 }

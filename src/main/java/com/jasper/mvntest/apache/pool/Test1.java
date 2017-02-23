@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
  * 并且创建的是conn_2对象实例，这是由于conn_1这个对象已经在第一个循环中被创建了出来，
  * 此时只是直接拿出来使用了。这里为了好测试，没有在第二个循环中做异常处理，
  * 真实情况下应该像第一个循环里的代码类是，在borrowObject和使用pool中对象出现异常时要记得调用invalidateObject方法，并且归还pool中的对象。
+ *
  * @author Jasper
  */
 public class Test1 {
@@ -29,6 +30,7 @@ public class Test1 {
         try {
             logger.info("================================================");
             for (int i = 0; i < 10; i++) {
+                logger.info("cur " + i);
                 MyConnection myConn = (MyConnection) pool.borrowObject();
                 try {
                     myConn.print();

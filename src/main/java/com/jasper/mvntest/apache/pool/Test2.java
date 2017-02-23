@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
  * 第二个循环里，虽然也是请求了10次MyConnection对象，
  * 但是由于每次的key都不一样，所以每次返回的都是同一个MyConnection对象实例，
  * 并且从日志可以看出makeObject方法只被调用了一次。
+ *
  * @author Jasper
  */
 public class Test2 {

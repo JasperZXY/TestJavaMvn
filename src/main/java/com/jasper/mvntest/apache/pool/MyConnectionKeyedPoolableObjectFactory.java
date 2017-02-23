@@ -12,30 +12,30 @@ public class MyConnectionKeyedPoolableObjectFactory implements KeyedPoolableObje
 
     public Object makeObject(Object key) throws Exception {
         MyConnection myConn = new MyConnection(key.toString());
-        logger.info(myConn.getName());
+        logger.info("makeObject " + myConn.getName());
         myConn.connect();
         return myConn;
     }
 
     public void activateObject(Object key, Object obj) throws Exception {
         MyConnection myConn = (MyConnection) obj;
-        logger.info(myConn.getName());
+        logger.info("activateObject " + myConn.getName());
     }
 
     public void passivateObject(Object key, Object obj) throws Exception {
         MyConnection myConn = (MyConnection) obj;
-        logger.info(myConn.getName());
+        logger.info("passivateObject " + myConn.getName());
     }
 
     public boolean validateObject(Object key, Object obj) {
         MyConnection myConn = (MyConnection) obj;
-        logger.info(myConn.getName());
+        logger.info("validateObject " + myConn.getName());
         return myConn.isConnected();
     }
 
     public void destroyObject(Object key, Object obj) throws Exception {
         MyConnection myConn = (MyConnection) obj;
-        logger.info(myConn.getName());
+        logger.info("destroyObject " + myConn.getName());
         myConn.close();
     }
 }
