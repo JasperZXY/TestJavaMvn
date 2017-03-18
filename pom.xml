@@ -29,6 +29,7 @@
         <rxjava_version>1.1.6</rxjava_version>
         <apache_poi_ver>3.8</apache_poi_ver>
         <netty_ver>4.1.8.Final</netty_ver>
+        <protostuff_ver>1.0.12</protostuff_ver>
     </properties>
 
     <dependencies>
@@ -218,6 +219,18 @@
             <version>${netty_ver}</version>
         </dependency>
 
+        <!-- protostuff -->
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+            <version>${protostuff_ver}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dyuproject.protostuff</groupId>
+            <artifactId>protostuff-runtime</artifactId>
+            <version>${protostuff_ver}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -246,11 +259,19 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <log.home>D:/logs</log.home>
+                <log.home>E:/logs</log.home>
                 <log.level>DEBUG</log.level>
                 <project.name>TestJavaMvn</project.name>
                 <logback.console>&lt;appender-ref ref=&quot;STDOUT&quot; /&gt;</logback.console>
             </properties>
         </profile>
     </profiles>
+
+    <repositories>
+        <repository>
+            <id>com.springsource.repository.bundles.external </id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+    </repositories>
 </project>
