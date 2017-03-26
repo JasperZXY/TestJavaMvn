@@ -30,6 +30,7 @@
         <apache_poi_ver>3.8</apache_poi_ver>
         <netty_ver>4.1.8.Final</netty_ver>
         <protostuff_ver>1.0.12</protostuff_ver>
+        <rocketmq_ver>4.0.0-incubating</rocketmq_ver>
     </properties>
 
     <dependencies>
@@ -230,6 +231,23 @@
             <artifactId>protostuff-runtime</artifactId>
             <version>${protostuff_ver}</version>
         </dependency>
+
+        <!-- RocketMQ-->
+        <dependency>
+            <groupId>com.alibaba.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>3.6.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>${rocketmq_ver}</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-srvutil</artifactId>
+            <version>${rocketmq_ver}</version>
+        </dependency>-->
 
     </dependencies>
 
