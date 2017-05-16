@@ -34,6 +34,7 @@
 		<netty_ver>4.1.8.Final</netty_ver>
 		<protostuff_ver>1.0.12</protostuff_ver>
 		<rocketmq_ver>4.0.0-incubating</rocketmq_ver>
+		<fastjson.version>1.2.32</fastjson.version>
 	</properties>
 
 	<dependencies>
@@ -263,8 +264,12 @@
 			<artifactId>rocketmq-client</artifactId>
 			<version>${rocketmq_ver}</version>
 		</dependency>
-		<!--<dependency> <groupId>org.apache.rocketmq</groupId> <artifactId>rocketmq-srvutil</artifactId> 
-			<version>${rocketmq_ver}</version> </dependency> -->
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
 
 	</dependencies>
 

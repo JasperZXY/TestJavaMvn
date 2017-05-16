@@ -12,10 +12,12 @@ import org.apache.zookeeper.ZooKeeper;
 import org.junit.Test;
 
 public class ZookeeperTest {
-    
+//    private static final String ZK_URL = "127.0.0.1:2181,127.0.0.1:2182";
+    private static final String ZK_URL = "127.0.0.1:2181";
+	
     public static void main(String[] args) throws Exception {
         // 创建一个Zookeeper实例，第一个参数为目标服务器地址和端口，第二个参数为Session超时时间，第三个为节点变化时的回调方法
-        final ZooKeeper zk = new ZooKeeper("127.0.0.1:2181,127.0.0.1:2182", 500000, new Watcher() {
+        final ZooKeeper zk = new ZooKeeper(ZK_URL, 500000, new Watcher() {
             // 监控所有被触发的事件
             @Override
             public void process(WatchedEvent event) {
