@@ -1,4 +1,4 @@
-package com.zxy.demo.mysql;
+package com.zxy.demo.db.mysql;
 
 import org.junit.Test;
 

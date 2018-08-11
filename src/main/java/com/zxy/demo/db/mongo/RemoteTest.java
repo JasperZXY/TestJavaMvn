@@ -1,4 +1,4 @@
-package com.zxy.demo.NoSQL.mongo;
+package com.zxy.demo.db.mongo;
 
 import java.net.UnknownHostException;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.zxy.demo.NoSQL.mongo;
+package com.zxy.demo.db.mongo;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
-import com.mongodb.TaggableReadPreference;
+
 
 public class SpringMongo {
     public static void main(String[] args) {
