@@ -328,6 +328,15 @@
 				<logback.console>&lt;appender-ref ref=&quot;STDOUT&quot; /&gt;</logback.console>
 			</properties>
 		</profile>
+		<profile>
+			<id>mac</id>
+			<properties>
+				<log.home>/data/logs</log.home>
+				<log.level>DEBUG</log.level>
+				<project.name>TestJavaMvn</project.name>
+				<logback.console>&lt;appender-ref ref=&quot;STDOUT&quot; /&gt;</logback.console>
+			</properties>
+		</profile>
 	</profiles>
 
 	<repositories>
