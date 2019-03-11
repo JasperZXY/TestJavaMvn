@@ -1,13 +1,11 @@
 package com.zxy.demo.excel.util;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TestExcel {
     public static void main(String[] args) throws Exception {
-        String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\Java操作excel-user.xls";
+        String filePath = System.getProperty("user.dir") + "/src/main/resources/Java操作excel-user.xls";
         System.out.println("filePath:" + filePath);
         final List<User> list = new ArrayList<>();
 
@@ -32,7 +30,7 @@ public class TestExcel {
         List<User> list2 = ExcelUtils.read(User.class, filePath);
         System.out.println("2:" + list2);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd HHmmss");
-        ExcelUtils.export(User.class, "E:\\tmp\\export" + simpleDateFormat.format(new Date()) + ".xls", list);
+        //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd HHmmss");
+        //ExcelUtils.export(User.class, "E:\\tmp\\export" + simpleDateFormat.format(new Date()) + ".xls", list);
     }
 }
