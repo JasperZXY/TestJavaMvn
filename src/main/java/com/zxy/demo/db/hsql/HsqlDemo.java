@@ -1,5 +1,7 @@
 package com.zxy.demo.db.hsql;
 
+import org.junit.Test;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,7 +14,8 @@ import java.sql.Statement;
  */
 public class HsqlDemo {
 
-    public static void main(String[] args) throws Exception {
+    @Test
+    public void test() throws Exception {
         // 加载HSQL DB的JDBC驱动
         Class.forName("org.hsqldb.jdbcDriver");
         // 在内存中建立数据库db，用户名跟密码为空
