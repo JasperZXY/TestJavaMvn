@@ -30,7 +30,7 @@
 		<slf4j_ver>1.7.5</slf4j_ver>
 		<logback_ver>1.0.13</logback_ver>
 		<rxjava_version>1.1.6</rxjava_version>
-		<apache_poi_ver>3.8</apache_poi_ver>
+		<apache_poi_ver>3.17</apache_poi_ver>
 		<netty_ver>4.1.8.Final</netty_ver>
 		<protostuff_ver>1.0.12</protostuff_ver>
 		<rocketmq_ver>4.0.0-incubating</rocketmq_ver>
