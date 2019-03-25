@@ -9,6 +9,7 @@ import java.util.List;
 
 
 /**
+ * 这个例子主要是说明字段比较多的时候的处理，单元格的宽度，哪几行需要合并，都需要跟表头保持对应
  */
 public class SheetData1 {
 
