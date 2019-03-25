@@ -34,7 +34,8 @@ public class ExcelDemo2 {
         Sheet sheet1 = wb.createSheet("订单报表");
         Sheet sheet2 = wb.createSheet("颜色画板");
 
-        Sheet0.dealSheet0(wb, sheet0);
+        SheetData0.writeData(wb, sheet0);
+        SheetData1.writeData(wb, sheet1);
         dealSheet2(wb, sheet2);
 
         SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd-HHmmss");

@@ -14,9 +14,9 @@ import static com.zxy.demo.excel.demo2.Utils.getShowDoublePrice;
 
 /**
  */
-public class Sheet0 {
+public class SheetData0 {
 
-    public static void dealSheet0(Workbook wb, Sheet sheet) {
+    public static void writeData(Workbook wb, Sheet sheet) {
         int startRow = 0;
 
         // 调整单元格宽度
@@ -49,14 +49,14 @@ public class Sheet0 {
         cellDesc.setCellValue("深圳分公司跟广州分公司\n导出时间：2019-01-01 12:00:00");
         startRow ++;
 
-        dealSheet0(wb, sheet, startRow, 0);
-        dealSheet0(wb, sheet, startRow, 5); // 中间空一列，所以从5开始
+        writeData(wb, sheet, startRow, 0);
+        writeData(wb, sheet, startRow, 5); // 中间空一列，所以从5开始
     }
 
     /*
     这里由于字段少，而且调整字段的顺序对整体的改动较小，所以在createCell基本是写死需要在哪一个单元格展示哪个字段
      */
-    private static int dealSheet0(Workbook wb, Sheet sheet, int startRow, int startCol) {
+    private static int writeData(Workbook wb, Sheet sheet, int startRow, int startCol) {
         int sourceRow = startRow;
         Row rowHead = buildRow(sheet, startRow);
         String[] titles = {"时间", "支出(元)", "实收(元)", "收益(元)"};
