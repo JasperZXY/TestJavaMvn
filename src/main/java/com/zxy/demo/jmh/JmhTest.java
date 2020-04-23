@@ -1,12 +1,8 @@
 package com.zxy.demo.jmh;
 
 import java.util.concurrent.TimeUnit;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.State;
+
+import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -41,6 +37,10 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @BenchmarkMode({Mode.AverageTime, Mode.Throughput}) // 测试方法平均执行时间跟吞吐量
 @OutputTimeUnit(TimeUnit.NANOSECONDS) // 输出结果的时间粒度为纳秒
 @State(Scope.Thread) // 每个测试线程一个实例
+@Warmup(iterations = 3)
+@Measurement(iterations = 3, time = 5)
+@Threads(1)
+@Fork(1)
 public class JmhTest {
 
     @Benchmark
@@ -56,9 +56,6 @@ public class JmhTest {
         // 使用一个单独进程执行测试，执行5遍warmup，然后执行5遍测试
         Options opt = new OptionsBuilder()
                 .include(JmhTest.class.getSimpleName())
-                .forks(1)
-                .warmupIterations(5)
-                .measurementIterations(5)
                 .build();
         new Runner(opt).run();
     }
