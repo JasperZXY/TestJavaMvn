@@ -91,6 +91,12 @@
 			<artifactId>commons-email</artifactId>
 			<version>${commons_email_ver}</version>
 		</dependency>
+		<!--可用于堆内存占用大小-->
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
