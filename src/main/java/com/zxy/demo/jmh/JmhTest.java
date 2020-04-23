@@ -53,7 +53,6 @@ public class JmhTest {
     }
 
     public static void main(String[] args) throws RunnerException {
-        // 使用一个单独进程执行测试，执行5遍warmup，然后执行5遍测试
         Options opt = new OptionsBuilder()
                 .include(JmhTest.class.getSimpleName())
                 .build();
