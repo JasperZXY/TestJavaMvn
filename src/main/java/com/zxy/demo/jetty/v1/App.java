@@ -5,6 +5,8 @@ import org.eclipse.jetty.servlet.ServletHandler;
 
 /**
  * 用 Jetty 跑一个最简单是 Servlet，方便后面演示其他东西
+ *
+ * 依赖 jetty-distribution
  */
 public class App {
 
