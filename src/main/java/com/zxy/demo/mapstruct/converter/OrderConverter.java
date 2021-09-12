@@ -9,9 +9,11 @@ import com.zxy.demo.mapstruct.dto.OrderItemDTO;
 import java.util.List;
 
 // 默认的方式，使用 Mappers.getMapper(Class) 来进行获取 Mapper
-@org.mapstruct.Mapper(componentModel = "default")
+//@org.mapstruct.Mapper(componentModel = "default")
 // 交给spring管理，生成的impl会带上“@Component”，然后就可以用“@Autowired”来进行注入
 //@org.mapstruct.Mapper(componentModel = "spring")
+
+@org.mapstruct.Mapper
 public interface OrderConverter {
 
     @org.mapstruct.Mapping(target = "totalPrice", source = "orderDO.price")
