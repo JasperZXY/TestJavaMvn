@@ -12,6 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * https://mapstruct.org/
+ *
+ * MapStruct是一个代码生成器，它基于约定优于配置的方法，
+ * 极大地简化了Java bean类型之间映射的实现。
+ *
+ * 在编译期间会生成接口的实现类（xxxImpl），里面会对Java bean做映射。
+ */
 public class App {
 
     @Autowired
