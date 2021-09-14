@@ -336,10 +336,20 @@
 			<version>1.6.3</version>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-distribution</artifactId>
 			<version>8.1.17.v20150415</version>
+		</dependency>-->
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>9.4.9.v20180320</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+			<version>9.4.9.v20180320</version>
 		</dependency>
 	</dependencies>
 
