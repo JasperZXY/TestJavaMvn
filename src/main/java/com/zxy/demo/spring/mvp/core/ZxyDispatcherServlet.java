@@ -63,7 +63,7 @@ public class ZxyDispatcherServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        System.out.println("========== ZxyDispatcherServlet init");
+        System.out.println(new Date() + " ========== ZxyDispatcherServlet init");
 
         // 1、加载配置文件
         doLoadConfig();
@@ -80,7 +80,7 @@ public class ZxyDispatcherServlet extends HttpServlet {
         // 5、RequestMapping 初始化
         doInitRequestMapping();
 
-        System.out.println("========== ZxyDispatcherServlet init end");
+        System.out.println(new Date() + " ========== ZxyDispatcherServlet init end");
 
     }
 
