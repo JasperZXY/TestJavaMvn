@@ -25,7 +25,7 @@
 		<commons_pool_ver>1.6</commons_pool_ver>
 		<commons_cli>1.4</commons_cli>
 		<commons_httpclient_version>3.1</commons_httpclient_version>
-		<apache_httpcomponents_ver>4.5.2</apache_httpcomponents_ver>
+		<apache_httpcomponents_ver>4.5.13</apache_httpcomponents_ver>
 		<guava_ver>16.0.1</guava_ver>
 		<slf4j_ver>1.7.5</slf4j_ver>
 		<logback_ver>1.0.13</logback_ver>
