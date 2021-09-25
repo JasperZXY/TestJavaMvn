@@ -31,7 +31,7 @@
 		<logback_ver>1.0.13</logback_ver>
 		<rxjava_version>1.1.6</rxjava_version>
 		<apache_poi_ver>3.17</apache_poi_ver>
-		<netty_ver>4.1.8.Final</netty_ver>
+		<netty_ver>4.1.42.Final</netty_ver>
 		<protostuff_ver>1.0.12</protostuff_ver>
 		<rocketmq_ver>4.0.0-incubating</rocketmq_ver>
 		<fastjson.version>1.2.32</fastjson.version>
