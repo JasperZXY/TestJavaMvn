@@ -34,7 +34,7 @@
 		<netty_ver>4.1.8.Final</netty_ver>
 		<protostuff_ver>1.0.12</protostuff_ver>
 		<rocketmq_ver>4.0.0-incubating</rocketmq_ver>
-		<fastjson.version>1.2.32</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 		<lombok.version>1.16.16</lombok.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
 	</properties>
