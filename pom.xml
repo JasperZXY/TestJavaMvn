@@ -19,7 +19,7 @@
 		<commons_collections_ver>3.2.1</commons_collections_ver>
 		<commons_beanutils_ver>1.9.1</commons_beanutils_ver>
 		<commons_betwixt_ver>0.8</commons_betwixt_ver>
-		<commons_email_ver>1.2</commons_email_ver>
+		<commons_email_ver>1.5</commons_email_ver>
 		<commons_compress_ver>1.13</commons_compress_ver>
 		<commons_net_ver>3.2</commons_net_ver>
 		<commons_pool_ver>1.6</commons_pool_ver>
